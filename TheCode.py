@@ -1,4 +1,8 @@
+#Social Media assignment 2 code
+#authors Wiljam Rautiainen, Johan Erlandson
+
 import re
+
 
 convIndex = []
 
@@ -10,6 +14,7 @@ def SeperateData (path):
         personB = file.read()
     with open(path + 'Time.txt', 'r') as file:
         time = file.read()
+        print(len(time))
 
     # find all the /s int the text
     A = [m.start() for m in re.finditer('/¦s', personA)]
@@ -38,8 +43,8 @@ def SeperateData (path):
     cleanedTime = time.strip()
     cleanedTime = cleanedTime.replace('¦', ',')
     # calling the function
-    finalTime = splitTime(final, cleanedTime)
-    return finalTime, final
+    timedata = splitTime(final, cleanedTime)
+    return  timedata,final,personA,personB
 
 
 
@@ -48,6 +53,8 @@ def SeperateData (path):
 def splitTime(list,time):
     k = 0
     finalTime = []
+    print("time lista",time)
+    print("timelista lenght", len(time))
     for i in list:
         piece = time[k:i]
         k = i
@@ -63,14 +70,11 @@ def splitTime(list,time):
 
     return finalTime
 
+##################################This is where anylyzising happens #######################################################
 # getting all the data
-data1 = SeperateData('data/data1/')
-data2 = SeperateData('data/data2/')
-data3 = SeperateData('data/data3/')
-data4 = SeperateData('data/data3/')
-#so data[0] is the times and data[1] is the index
 
-##################################This is where anylyzising happens
+
+
 
 
 
